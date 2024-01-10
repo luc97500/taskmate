@@ -1,25 +1,15 @@
-import logo from './logo.svg';
+import { Header } from "./components/Header";
+import { TaskList } from "./components/TaskList";
 import './App.css';
+import {Footer} from './components/Footer'
 
-function App() {
+export function App() {
+    const info = "Random"//popdrilling ke liye
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <TaskList info = {info}/>
+      <Footer/>
     </div>
   );
 }
-
-export default App;
