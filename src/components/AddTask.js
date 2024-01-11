@@ -21,6 +21,10 @@ export const AddTask = ({tasks, setTasks}) => {
             name: taskValue,
             completed: Boolean(progress)
         }
+        if(task.taskValue === undefined){
+          alert("Please add TaskName !")
+          return
+        }
         setTasks([...tasks, task]);//previous + new added concate
         handleReset();
     }
