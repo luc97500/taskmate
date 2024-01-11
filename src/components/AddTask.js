@@ -21,7 +21,7 @@ export const AddTask = ({tasks, setTasks}) => {
             name: taskValue,
             completed: Boolean(progress)
         }
-        setTasks([...tasks, task]);//previous + new added
+        setTasks([...tasks, task]);//previous + new added concate
         handleReset();
     }
 
