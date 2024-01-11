@@ -1,47 +1,30 @@
 import { useState } from 'react';
-import { TaskCard } from './TaskCard';//no default used so use {}
-import {BoxCard} from './BoxCard'
+import { TaskCard } from './TaskCard';
+import "./TaskList.css";
 
-export const TaskList = ({info}) => {//info popdrilling passing data from multiple components.
-    let obj = [
-        {id: 5271, name: "Record React Lectures", completed: true}, 
-        {id: 7825, name: "Edit React Lectures", completed: false}, 
-        {id: 8391, name: "Watch Lectures", completed: false}
-    ]
-    const [tasks, setTasks] = useState(obj);
+export const TaskList = ({tasks, setTasks}) => {
     const [show, setShow] = useState(true);
 
-    
-    function Tasklist() {
-        setShow(true)
-        setTasks(obj)
-    }
-    
-    
     function handleDelete(id){
         setTasks(tasks.filter(task => task.id !== id));
     }
 
+    function clearAll(){
+      setTasks([])
+    }
+
   return (
-    <div className='tasklist'>
-        <h1>Task List</h1>
+    <section className='tasklist'>
+      <button onClick={clearAll} className='taskiist'>CLEAR All Tasks Added</button>
         <ul>
-            <button className='trigger' onClick={() => setShow(!show)}>TOGGLE to hide all</button>
-            <button className='trigger' onClick={()=> Tasklist() }>RESET To Initial state</button>
-             { show && tasks.map((task) => (
-                <TaskCard key={task.id} info = {info} task={task} handleDelete={handleDelete} />// task and handleDelete passed as the Props.
+            <div className='header'>
+                <h1>TaskList</h1>
+                <button className='trigger' onClick={() => setShow(!show)}>{ show ? "Hide Tasks" : "Show Tasks"}</button>
+            </div>
+            { show && tasks.map((task) => (
+                <TaskCard key={task.id} task={task} handleDelete={handleDelete} />
             )) }
         </ul>
-        <BoxCard result = "success">
-            <p className="title">Lorem ipsum dolor sit </p>
-            <p className="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, a.</p>
-        </BoxCard>
-
-        <BoxCard result="warning">
-                <p className="title">Lorem ipsum dolor sit amet.</p>
-                <p className="description">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, in!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, minima illo.</p>
-        </BoxCard>
-    </div>
+    </section>
   )
 }

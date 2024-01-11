@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 
 export const BoxCard = ({ result, children }) => {
   const [show, setShow] = useState(true);
+  
   return (
     <>
     <div className={show ? "" : "hidden"}>
@@ -15,8 +16,9 @@ export const BoxCard = ({ result, children }) => {
       </div>
     </div>
     <div>
-    <button onClick={() => setShow(true)} className="hide">
-      UNHIDE
+      {/* {color if else condition inline styling} */}
+    <button style={{backgroundColor : !show ? '#3D8361' : "#be3434" , padding:"10px",borderRadius:"5px"}} onClick={() => setShow(true)} className="hide">
+      Unhide
     </button>
   </div>
   </>
