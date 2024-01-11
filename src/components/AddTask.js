@@ -21,7 +21,7 @@ export const AddTask = ({tasks, setTasks}) => {
             name: taskValue,
             completed: Boolean(progress)
         }
-        if(task.taskValue === undefined){
+        if(task.name === undefined || task.name === ''){
           alert("Please add TaskName !")
           return
         }
